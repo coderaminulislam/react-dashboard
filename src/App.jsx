@@ -1,7 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MasterLayout from './Layout/MasterLayout'
-import Content from './components/Content'
 import Dashboard from './pages/Dashboard'
 import CreditCards from './pages/CreditCards'
 

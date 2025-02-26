@@ -67,26 +67,21 @@ useEffect(()=>{
                                 <span className='text-lg'>See All</span>
                             </div>
 
-                            <div className="cards flex flex-col md:flex-row justify-between gap-8 ">
-                             
-                                <CardSummary list= {list} limit={2}/>
-                              
-                                
+                            <div className="cards flex flex-col md:flex-row justify-between gap-8 ">                          
+                                <CardSummary list= {list} limit={2}/> 
                             </div>
                             
                         </div>
                         <div className="users_transaction ">
                             <h3 className='mb-5 font-semibold font-Inter text-heading-color text-[22px]'>Transctions</h3>
-                            <RecentTransaction transaction={recentTransaction}/>
-                            
+                            <RecentTransaction transaction={recentTransaction}/>                         
                         </div>
                    </div>
                 </div>
             </div>
 
             <div className="weekly_activity_scetion mb-6">
-                <div className="container px-9">
-                    
+                <div className="container px-9">                
                     <div className="grid grid-cols-12 gap-8">
                         <div className="col-span-12 lg:col-span-8">
                         <div className="sce_title mb-5 font-semibold font-Inter text-heading-color text-[22px]">Weekly Activity</div>
@@ -105,8 +100,7 @@ useEffect(()=>{
             </div>
             <div className="transfer_blance_history_scetion">
                 <div className="container px-9">
-                    
-                    <div className="grid grid-cols-12 gap-4">
+                  <div className="grid grid-cols-12 gap-4">
                         <div className="xl:col-span-4  lg:col-span-5 col-span-12">
                         <div className="sce_title mb-5 font-semibold font-Inter text-heading-color text-[22px]">Quick Transfer</div>
                             <div className="line_chart bg-white rounded-[25px] p-6 min-h-[276px] flex items-center justify-center flex-col">
