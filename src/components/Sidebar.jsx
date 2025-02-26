@@ -3,12 +3,12 @@ import logo from '../assets/images/Logo.svg';
 import { Link } from 'react-router-dom';
 import { House, CreditCard } from 'lucide-react';
 
-
+  
 const Sidebar = () => {
 
     
     const MenuItems =[
-        {id:1, name: 'Dashboard', icon:<House/>, isAactive:'dashboard', link: '/dashboard'},
+        {id:1, name: 'Dashboard', icon:<House/>, isAactive:'dashboard', link: '/'},
         {id:2, name: 'Credit Cards', icon:<CreditCard/>, isAactive:'creditcards', link: '/creditcards'},
     ]
     const [activeMenu, setActiveMenu]=useState(MenuItems[0].isAactive);
