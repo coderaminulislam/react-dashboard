@@ -1,32 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
-const CustomPieChart = () => {
-  const chartOptions = {
+const CustomPieChart = ({ pieDataList }) => {
+  const [series, setSeries] = useState([]);
+  const [chartOptions, setChartOptions] = useState({
     chart: {
       type: "pie",
-      height: '260'
+      height: "260",
     },
-    labels: ["Entertainment", "Bill Expense", "Investment", "Others"],
-    colors: ["#1E275D", "#FF7F00", "#FF00FF", "#007FFF"], // Matching your chart colors
+    labels: [],
+    colors: ["#1E275D", "#FF7F00", "#FF00FF", "#007FFF"],
     legend: {
-      show: false, // Hide legend since labels are inside slices
+      show: false,
     },
     stroke: {
       show: true,
       width: 2,
-      colors: ["#ffffff"], // White stroke to separate slices
+      colors: ["#ffffff"],
     },
     dataLabels: {
       enabled: true,
       style: {
         fontSize: "13px",
         fontWeight: "bold",
-        colors: ["#ffffff"], // White text for better visibility
+        colors: ["#ffffff"],
       },
       formatter: function (val, opts) {
         return `${opts.w.globals.labels[opts.seriesIndex]}`;
-    },
+      },
       dropShadow: {
         enabled: true,
         top: 1,
@@ -43,21 +44,35 @@ const CustomPieChart = () => {
     },
     plotOptions: {
       pie: {
-        expandOnClick: false, // Disable animation when clicking
-        offsetX: 0, // No horizontal shift
-        offsetY: 10, // Moves slices slightly outward
-        customScale: 1.05, // Makes the chart slightly bigger
+        expandOnClick: false,
+        offsetX: 0,
+        offsetY: 10,
+        customScale: 1.05,
         dataLabels: {
-          offset: -10, // Adjust label positioning
+          offset: -10,
         },
         donut: {
-          size: "0%", // Ensures this is a pie, not a donut chart
+          size: "0%",
         },
       },
     },
-  };
+  });
 
-  const series = [30, 15, 20, 35]; // Matching your image data
+  useEffect(() => {
+      if ( !pieDataList || pieDataList.length === 0) {
+        return
+      }
+      const labels = pieDataList.map((item) => item.category);
+      const values = pieDataList.map((item) => item.value);
+
+      setSeries(values); // ✅ Update series separately
+
+      setChartOptions((prev) => ({
+        ...prev,
+        labels: labels, // ✅ Update labels correctly
+      }));
+
+  }, [pieDataList]);
 
   return (
     <div className="w-full flex justify-center items-center">

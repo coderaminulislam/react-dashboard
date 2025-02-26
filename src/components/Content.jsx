@@ -6,7 +6,7 @@ import WeeklyActivity from './WeeklyActivity';
 import CustomPieChart from './CustomPieChart';
 import BlanceChart from './BlanceChart';
 import QuickTransferCard from './QuickTransferCard';
-import { cardListApi, transactionListApi } from '../ApicallList/ApiCallMethod';
+import { cardListApi, pieChartApi, transactionListApi, WeeklyActivityApi } from '../ApicallList/ApiCallMethod';
 import RecentTransaction from './RecentTransaction';
 
 const Content = () => {
@@ -32,7 +32,29 @@ useEffect(()=>{
         setRecentTransaction(res.data)
 
     })()
-},[])
+},[]);
+
+// Weekly API Call
+const [Activity, setActivity] = useState(null)
+useEffect(()=>{
+    (async()=>{
+        let res = await WeeklyActivityApi();
+        console.log(res.data)
+        setActivity(res.data)
+
+    })()
+},[]);
+
+// Expensive API Call
+const [pieChart, setPieChart] = useState(null)
+useEffect(()=>{
+    (async()=>{
+        let res = await pieChartApi();
+        console.log(res.data)
+        setPieChart(res.data)
+
+    })()
+},[]);
 
     return (
         <div className='bg-primary-bg w-full pb-6'>
@@ -61,6 +83,7 @@ useEffect(()=>{
                    </div>
                 </div>
             </div>
+
             <div className="weekly_activity_scetion mb-6">
                 <div className="container px-9">
                     
@@ -68,13 +91,13 @@ useEffect(()=>{
                         <div className="col-span-12 lg:col-span-8">
                         <div className="sce_title mb-5 font-semibold font-Inter text-heading-color text-[22px]">Weekly Activity</div>
                             <div className="line_chart bg-white rounded-[25px] p-6">
-                                <WeeklyActivity/>
+                                <WeeklyActivity weeklyDataList = {Activity}/>
                             </div>
                         </div>
                         <div className="col-span-12 lg:col-span-4">
                         <div className="sce_title mb-5 font-semibold font-Inter text-heading-color text-[22px]">Expense Statistics</div>
                             <div className="circle_chart bg-white rounded-[25px] p-6">
-                               <CustomPieChart/>
+                               <CustomPieChart pieDataList ={pieChart}/>
                             </div>
                         </div>
                     </div>

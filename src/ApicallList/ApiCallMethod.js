@@ -31,3 +31,13 @@ export async function WeeklyActivityApi(params) {
     }
     
 }
+
+export async function pieChartApi(params) {
+    let res = await axios.get(BaseUrl + '/expense-list');
+    if(res.status === 200){
+        return res.data;
+    } else{
+        return []
+    }
+    
+}
