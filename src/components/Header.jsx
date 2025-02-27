@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import avatar from '../assets/images/avatar.svg';
-import { BellDot, Settings } from 'lucide-react';
+import { BellDot, Settings, Menu } from 'lucide-react';
 
-const Header = () => {
+ const Header= ({isMenuOpen, setIsMenuOpen})=>{
+
     return (
         <div className=' w-full bg-white shadow-lg py-5 px-9'>
             <div className="flex justify-between items-center ">
-                <button className='xl:hidden'>Menu Bar</button>
+                <button className=' xl:hidden cursor-pointer' onClick={()=> setIsMenuOpen(!isMenuOpen)}><Menu /></button>
                 <h2 className='font-Inter font-semibold text-[28px] text-heading-color'>Overview</h2>
                 <div className="profile_section flex justify-between items-center space-x-5">
                     <div className="search_bar hidden md:block">

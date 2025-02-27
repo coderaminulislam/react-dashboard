@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import logo from '../assets/images/Logo.svg';
 import { Link } from 'react-router-dom';
-import { House, CreditCard } from 'lucide-react';
+import { House, CreditCard, ArrowBigLeft } from 'lucide-react';
 
   
-const Sidebar = () => {
+const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
 
     
     const MenuItems =[
@@ -20,7 +20,7 @@ const Sidebar = () => {
 
 
     return (
-        <div className=' bg-white w-[250px]  px-9 py-5 shadow-lg hidden 2xl:block'>
+        <aside className={` bg-white h-screen left-10 xl:left-0 px-9 py-5 w-[250px] shadow-lg transition-all xl:block xl:relative duration-300 transform ${isMenuOpen ? "block absolute -left-0 top-0 z-20  ": "hidden"}`}>
             <a href="">
                <img src={logo} alt="" />
             </a>
@@ -31,15 +31,13 @@ const Sidebar = () => {
                         MenuItems.map((item)=>(
                             <li key={item.id}><Link className={`flex gap-x-6 items-center font-Inter font-medium ${  activeMenu === item.isAactive ? 'text-primary-color': 'hover:text-primary-color text-gray-500'}` } onClick={()=>activeMenuItem(item.isAactive)} to={item.link}> {item.icon} {item.name}  </Link></li>
                         ))
-                    }
-                   
-
-                    
-                   
+                    }       
                 </ul>
             </nav>
+
+            <button className='absolute -right-3 bottom-6 text-white z-10 shadow-lg xl:hidden bg-primary-color w-8 h-8 rounded-full text-sm flex items-center justify-center cursor-pointer' onClick={()=>setIsMenuOpen(false)}><ArrowBigLeft /></button>
             
-        </div>
+        </aside>
     );
 };
 

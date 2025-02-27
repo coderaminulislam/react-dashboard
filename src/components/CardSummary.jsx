@@ -19,7 +19,7 @@ const CardSummary = ({list, limit}) => {
                 const validThru =`${formattedValidity[1]}/${formattedValidity[0].slice(2)}`;
                 const maskedCardNumber = item.card_number ? item.card_number.slice(0, 2) + '*'.repeat(item.card_number.length - 4) + item.card_number.slice(-2): '';
                 return (
-                    <>
+                    
                         <div key={i} className={`mycards-1 rounded-3xl  min-w-[250px] w-full  border-1 border-s-primary-bg ${i ===1 ? 'bg-white text-black': 'bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white'}`}>
                             <div className="mycard_info p-6">
                                 <div className="cards_header flex justify-between items-center">
@@ -38,7 +38,7 @@ const CardSummary = ({list, limit}) => {
                                 <img src={i ==1 ? payment_logo : card_icon } alt="chip-card" />
                             </div>
                         </div>
-                    </>
+                    
                 )
             }
                        
