@@ -68,7 +68,7 @@ const CustomPieChart = () => {
 
   const [expensivelist, setExpensivelist]=useState(null)
   useEffect(()=>{
-    fetch("http://inertia-pos.manirul.xyz/api/expense-list")
+    fetch("https://inertia-pos.manirul.xyz/api/expense-list")
     .then((response)=>response.json())
     .then((data)=>{
      if(data.status === 'Success'){
