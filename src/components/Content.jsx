@@ -45,16 +45,7 @@ useEffect(()=>{
     })()
 },[]);
 
-// Expensive API Call
-const [pieChart, setPieChart] = useState(null)
-useEffect(()=>{
-    (async()=>{
-        let res = await pieChartApi();
-        console.log(res.data)
-        setPieChart(res.data)
 
-    })()
-},[]);
 
     return (
         <div className='bg-primary-bg w-full pb-6'>
@@ -92,7 +83,7 @@ useEffect(()=>{
                         <div className="col-span-12 lg:col-span-4">
                         <div className="sce_title mb-5 font-semibold font-Inter text-heading-color text-[22px]">Expense Statistics</div>
                             <div className="circle_chart bg-white rounded-[25px] p-6">
-                               <CustomPieChart pieDataList ={pieChart}/>
+                           <CustomPieChart/>
                             </div>
                         </div>
                     </div>

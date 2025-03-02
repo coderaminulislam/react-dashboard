@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BaseUrl = 'https://inertia-pos.manirul.xyz/api'
+const BaseUrl = 'http://inertia-pos.manirul.xyz/api'
 
 
 export async function cardListApi(params) {
