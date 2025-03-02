@@ -21,8 +21,8 @@ useEffect(()=>{
 
     return (
         <div className="w-full">
-        <div className='container'>
-            <div className="flex flex-row gap-x-6 py-9 px-9">
+        <div className='container-fluid'>
+            <div className="flex flex-col md:flex-row gap-6 py-9 px-9">
                 <CardSummary list={list} />
             
             </div>

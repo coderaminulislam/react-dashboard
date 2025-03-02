@@ -20,7 +20,7 @@ const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
 
 
     return (
-        <aside className={` bg-white h-screen px-9 py-5 w-[250px] shadow-lg transition-all xl:block xl:relative duration-300 transform ${isMenuOpen ? "block absolute left-0 top-0 z-20  ": "hidden"}`}>
+        <aside className={` bg-white h-screen px-9 py-5 w-[250px] shadow-lg xl:block xl:relative transition-all ease-in-out ${isMenuOpen ? "block absolute left-0 top-0 z-20  ": "hidden"}`}>
             <a href="">
                <img src={logo} alt="" />
             </a>
