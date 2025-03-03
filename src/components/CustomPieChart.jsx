@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
+import {  pieChartApi } from './../ApicallList/ApiCallMethod';
 
 
 const CustomPieChart = () => {
@@ -28,15 +29,16 @@ const CustomPieChart = () => {
         }
       },
       
+ 
+      formatter:function(val, opts){
+        return `${opts.w.globals.labels[opts.seriesIndex]}`
+
+      },
       tooltip: {
         enabled: true,
         y: {
           formatter: (val) => `${val}%`,
         },
-      },
-      formatter:function(val, opts){
-        return `${opts.w.globals.labels[opts.seriesIndex]}`
-
       },
       dropShadow: {
         enabled: true,
@@ -67,28 +69,30 @@ const CustomPieChart = () => {
 
 
   const [expensivelist, setExpensivelist]=useState(null)
+ 
   useEffect(()=>{
-    fetch("https://inertia-pos.manirul.xyz/api/expense-list")
-    .then((response)=>response.json())
-    .then((data)=>{
-     if(data.status === 'Success'){
-      const {entertainment, bill, investment, others}= data.data;
+    (async()=>{
+      let res = await pieChartApi();
+      setExpensivelist(res.data);
 
+       delete res.data.id
+       const values = Object.values(res.data);
+       const labels = Object.keys(res.data);
+   
+      
+      if(res && res.data){
+      
       setChartData({
-        series:[entertainment, bill, investment, others],
+        series:values,
         options:{
           chart:{type:'pie'},
-          labels: ["Entertainment", "Bill", "Investment", "Others"],
+          labels: labels,
         }
       })
-
-     }
-    })
-
+      }
+    })()
     
-    
-
-  },[])
+  }, [])
   
 
   return (

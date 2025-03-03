@@ -6,7 +6,7 @@ import WeeklyActivity from './WeeklyActivity';
 import CustomPieChart from './CustomPieChart';
 import BlanceChart from './BlanceChart';
 import QuickTransferCard from './QuickTransferCard';
-import { cardListApi, pieChartApi, transactionListApi, WeeklyActivityApi } from '../ApicallList/ApiCallMethod';
+import { cardListApi, transactionListApi } from '../ApicallList/ApiCallMethod';
 import RecentTransaction from './RecentTransaction';
 
 const Content = () => {
@@ -34,16 +34,7 @@ useEffect(()=>{
     })()
 },[]);
 
-// Weekly API Call
-const [Activity, setActivity] = useState(null)
-useEffect(()=>{
-    (async()=>{
-        let res = await WeeklyActivityApi();
-        console.log(res.data)
-        setActivity(res.data)
 
-    })()
-},[]);
 
 
 
@@ -77,7 +68,7 @@ useEffect(()=>{
                         <div className="col-span-12 lg:col-span-8">
                         <div className="sce_title mb-5 font-semibold font-Inter text-heading-color text-[22px]">Weekly Activity</div>
                             <div className="line_chart bg-white rounded-[25px] p-6">
-                                <WeeklyActivity weeklyDataList = {Activity}/>
+                                <WeeklyActivity/>
                             </div>
                         </div>
                         <div className="col-span-12 lg:col-span-4">

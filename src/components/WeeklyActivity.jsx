@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
+import { WeeklyActivityApi } from "../ApicallList/ApiCallMethod";
 
-const WeeklyActivity = ({ weeklyDataList }) => {
+const WeeklyActivity = () => {
   const [chartData, setChartData] = useState({
     series: [],
     options: {
@@ -41,32 +42,32 @@ const WeeklyActivity = ({ weeklyDataList }) => {
     },
   });
 
-  useEffect(() => {
-    if (!weeklyDataList || weeklyDataList.length === 0) {
-      return;
+// Weekly API Call
+const [Activity, setActivity] = useState(null)
+useEffect(()=>{
+    (async()=>{
+        let res = await WeeklyActivityApi();
+        setActivity(res.data)
+        const dataWeekly = res.data;
+        const depoData = dataWeekly.map((item)=> item.deposit);
+        const withdrawData = dataWeekly.map((item)=> item.withdraw);
+        const daysData = dataWeekly.map((item) => item.days);
+       if(dataWeekly){
+      setChartData({
+        series: [
+          {name:"Deposit", data: depoData, color:"#16dbcc"},
+          { name: "Withdraw", data: withdrawData, color: "#1814F3" },
+        ],
+        options: {
+                ...chartData.options,
+               xaxis: { categories: daysData },
+             },
+      })
     }
 
-    console.log("weeklyDataList:", weeklyDataList); // ✅ Check incoming data
 
-    const depoData = weeklyDataList.map((item) => item.deposit);
-    const withdrawData = weeklyDataList.map((item) => item.withdraw);
-    const daysData = weeklyDataList.map((item) => item.days);
-
-    if (!depoData.length && !withdrawData.length) {
-      return;
-    }
-
-    setChartData({
-      series: [
-        { name: "Deposit", data: depoData, color: "#16DBCC" },
-        { name: "Withdraw", data: withdrawData, color: "#1814F3" },
-      ],
-      options: {
-        ...chartData.options,
-        xaxis: { categories: daysData },
-      },
-    });
-  }, [weeklyDataList]);
+    })()
+},[]);
 
   return (
     <div>

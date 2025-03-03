@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreditCard, RussianRuble, DollarSign, PieChart } from 'lucide-react';
+import { CreditCard} from 'lucide-react';
 
 const RecentTransaction = ({transaction}) => {
 
@@ -10,8 +10,11 @@ const RecentTransaction = ({transaction}) => {
                 transaction && transaction.map((item, i)=>(
                     <div key={i} className="card_history flex justify-between items-center mb-3 gap-4">
                         <div className="iconbox w-[55px] h-[55px] bg-[#FFF5D9] items-center justify-center flex rounded-full">
-                        
-                        <CreditCard/>
+                        <img src={BaseURL + item.image} alt="" />
+                        {
+                            console.log(BaseURL)
+                        }
+                     
                         </div>
                         <div className="iconbox_content flex-1">
                             <h3 className='font-medium font-Inter text-heading-color leading-normal text-lg mb-2'>{item.name}</h3>
