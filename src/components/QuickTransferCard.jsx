@@ -24,8 +24,8 @@ const QuickTransferCard = () => {
 
                 
             </div>
-            <div className="quicK_sendmoney flex gap-3">
-                <p className='text-text-color'>Write Amount</p>
+            <div className="quicK_sendmoney flex flex-col md:items-center md:justify-between md:flex-row gap-3">
+                <p className='text-text-color mb-6'>Write Amount</p>
                 <form className="amount_field flex flex-1 relative items-center">
                     <input type="text" className='bg-[#EDF1F7] px-2 py-3 w-full rounded-full absolute right-0 z-0 focus:outline-none'/>
                     <button className='bg-primary-color text-white px-4 py-3 rounded-full flex gap-x-2 z-10 absolute right-0'>
