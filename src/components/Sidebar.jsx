@@ -20,16 +20,16 @@ const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
 
 
     return (
-        <aside className={` bg-white h-screen px-9 py-5 w-[250px] shadow-lg xl:block xl:relative transition-all ease-in-out ${isMenuOpen ? "block absolute left-0 top-0 z-20  ": "hidden"}`}>
-            <a href="">
+        <aside className={` bg-white h-screen py-5 w-[250px] shadow-lg xl:block xl:relative transition-all ease-in-out ${isMenuOpen ? "block absolute left-0 top-0 z-20  ": "hidden"}`}>
+            <a href="" className='pl-8 inline-block'>
                <img src={logo} alt="" />
             </a>
 
             <nav className="sidebar_nav mt-20">
-                <ul className='space-y-6'>
+                <ul className='space-y-2' >
                     {
                         MenuItems.map((item)=>(
-                            <li key={item.id}><Link className={`flex gap-x-6 items-center font-Inter font-medium ${  activeMenu === item.isAactive ? 'text-primary-color': 'hover:text-primary-color text-gray-500'}` } onClick={()=>activeMenuItem(item.isAactive)} to={item.link}> {item.icon} {item.name}  </Link></li>
+                            <li key={item.id}><Link className={`flex border-l-4 border-primary-white rounded-r gap-x-6 items-center font-Inter pl-4 py-2 font-medium ${  activeMenu === item.isAactive ? 'text-primary-color border-l-4 border-primary-color rounded-r ': 'hover:text-primary-color text-gray-500'}` } onClick={()=>activeMenuItem(item.isAactive)} to={item.link}> {item.icon} {item.name}  </Link></li>
                         ))
                     }       
                 </ul>
