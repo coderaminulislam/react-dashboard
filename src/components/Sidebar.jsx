@@ -35,7 +35,7 @@ const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
                 </ul>
             </nav>
 
-            <button className='absolute -right-3 bottom-6 text-white z-10 shadow-lg xl:hidden bg-primary-color w-8 h-8 rounded-full text-sm flex items-center justify-center cursor-pointer' onClick={()=>setIsMenuOpen(false)}><ArrowBigLeft /></button>
+            <button className='absolute -right-3 top-24 text-white z-10 shadow-lg xl:hidden bg-primary-color w-8 h-8 rounded-full text-sm flex items-center justify-center cursor-pointer' onClick={()=>setIsMenuOpen(false)}><ArrowBigLeft /></button>
             
         </aside>
     );
